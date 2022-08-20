@@ -4,7 +4,7 @@ import { Searchbar } from './components/Searchbar/Searchbar';
 import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import { ThreeDots } from 'react-loader-spinner';
 import { Button } from './shared/Button/Button';
-import { Modal } from './shared/Modal/Modal';
+import ModalWindow from './shared/Modal/Modal';
 import * as API from './components/services/pixabay';
 
 export class App extends Component {
@@ -109,7 +109,11 @@ export class App extends Component {
           <Button onLoadMore={this.onLoadMoreButton} isLoading={isLoading} />
         )}
         {currentLargeImageURL && (
-          <Modal closeModal={this.onModalClose} url={currentLargeImageURL} />
+          <ModalWindow
+            src={currentLargeImageURL}
+            // alt={alt}
+            closeModal={this.onModalClose}
+          />
         )}
       </Container>
     );
