@@ -10,12 +10,24 @@ class ModalWindow extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown = event => {
-    event.code === 'Escape' && this.props.onClose();
+  // handleKeyDown = event => {
+  //   event.code === 'Escape' && this.props.onClose();
+  // };
+
+  // handleOverlayClick = event => {
+  //   event.currentTarget === event.target && this.props.onClose();
+  // };
+
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      this.props.closeModal();
+    }
   };
 
-  handleOverlayClick = event => {
-    event.currentTarget === event.target && this.props.onClose();
+  handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      this.props.closeModal();
+    }
   };
 
   render() {
